@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    image: ruby:3.2.2
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - node
+
+  db:
+    image: postgres:latest # ou outra imagem de banco de dados que preferir
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 250303
+      POSTGRES_DB: web
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  node:
+    image: node:14 
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: yarn install
+
+volumes:
+  db-data:
