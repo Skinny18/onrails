@@ -1,13 +1,17 @@
 # Use an official Ruby runtime as a parent image
-FROM ruby:2.7
+FROM ruby:3.2.2
 
 # Set the working directory in the container
 WORKDIR /app
 
 RUN gem install rails
 
-# Copy the Gemfile and Gemfile.lock into the container at /app
+COPY . .
 
+# Install Node.js and Yarn
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs npm
+RUN npm install -g yarn
 # Install dependencies
 RUN bundle install
 
@@ -23,5 +27,6 @@ EXPOSE 3000
 ENV PATH="/app/bin:${PATH}"
 
 
+
 # Start the Rails server when the container is run
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
