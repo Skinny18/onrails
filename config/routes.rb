@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'steam/index'
-  get 'pser/new'
+  get 'user/new'
 
-  resources :psers, only: [:new, :create] do
+  resources :users, only: [:new, :create] do
     member do
-      get :show_qrcode
+      get :qrcode
     end
   end
   
