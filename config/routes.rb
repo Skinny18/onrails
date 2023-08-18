@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'user/new'
 
-  resources :users, only: [:new, :create] do
+  get 'login', to: 'users#login'
+  
+  
+  resources :users, only: [:new, :create, :login] do
     member do
       get :qrcode
     end
