@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
+<div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+  <div class="card-body">
+  <img src="<%= @api %>" alt="qrcode" >
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
@@ -8,4 +11,5 @@
 
   <%= button_to "Destroy this user", @user, method: :delete %>
 </div>
-<img src="<%= @api %>" alt="qrcode" >
+</div>
+</div>

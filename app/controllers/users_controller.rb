@@ -49,6 +49,25 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # def login
+  #   if request.post?
+  #     user = User.find_by(email: params[:email])
+  #     if user && user.authenticate(params[:password])
+  #       session[:user_id] = user.id
+  #       redirect_to root_path, notice: 'Login successful!'
+  #     else
+  #       flash.now[:alert] = 'Invalid email/password combination'
+  #     end
+  #   end
+  # end
+
+  # def logout
+  #   session.delete(:user_id)
+  #   redirect_to root_path, notice: 'Logged out!'
+  # end
+
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
