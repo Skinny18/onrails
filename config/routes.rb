@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :enderecos
+  resources :profiles
   resources :users
   get 'user/new'
 
